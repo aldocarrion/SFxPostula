@@ -31,15 +31,18 @@ def np_arr(arr):
 
 for pos in sf_file.values:
     if pos[0] in pos_file.values:
-#        print(pos[0])
         link_sf = addHTML_SF(pos[1])
         link_postula = addHTML_Postula(pos[0])
-#        print(link_postula)
         arrOportunidad = [pos[0], (link_sf), (link_postula)]
-#        print(arrOportunidad)
         arr_f.append(arrOportunidad)
     else:
-        arr_nf.append(pos)
+        link_sf = addHTML_SF(pos[1])
+        link_postula = addHTML_Postula(pos[0])
+        arrOportunidad = [pos[0], link_sf, link_postula]
+        for i in range(len(pos)):
+            arrOportunidad.append(pos[i])
+        #arrOportunidad.append(pos[2:])
+        arr_nf.append(arrOportunidad)
 
 
 df_casesFound = pd.DataFrame(arr_f)
